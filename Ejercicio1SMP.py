@@ -15,7 +15,7 @@ REPETICIONES = 5  # se promedia para reducir ruido en la medición
 SEMILLA = 42
 
 
-# ---------------------------------------------------------------- utilidades
+#utilidades
 def crear_matriz(n):
     """Matriz n x n con enteros aleatorios (lista de listas, Python puro)."""
     random.seed(SEMILLA)
@@ -38,7 +38,7 @@ def medir(funcion, *args):
     return resultado, sum(tiempos) / len(tiempos)
 
 
-# ------------------------------------------------- 1) Versión secuencial
+#1 Versión secuencial
 def suma_secuencial(matriz):
     total = 0
     for fila in matriz:
@@ -46,7 +46,7 @@ def suma_secuencial(matriz):
     return total
 
 
-# ------------------------------------- 2) Hilos, Python puro (un hilo/bloque)
+#2 Hilos, Python puro (un hilo/bloque)
 def suma_bloque(matriz, fi, ci, b):
     """Tarea de cada hilo: suma de los elementos de su bloque."""
     return sum(sum(matriz[i][ci:ci + b]) for i in range(fi, fi + b))
@@ -60,7 +60,7 @@ def suma_hilos(matriz, n, b):
     return sum(parciales)                           # combinación final
 
 
-# ------------------------------------------- 3) Hilos + NumPy (libera el GIL)
+#3 Hilos + NumPy (libera el GIL)
 def suma_bloque_np(arr, fi, ci, b):
     return int(arr[fi:fi + b, ci:ci + b].sum())
 
@@ -76,7 +76,7 @@ def suma_secuencial_numpy(arr):
     return int(arr.sum())
 
 
-# ---------------------------------------------------------------------- main
+#main
 if __name__ == "__main__":
     print(f"Matriz {N}x{N}, bloques {B}x{B} -> {(N // B) ** 2} bloques/hilos")
     print(f"Promedio de {REPETICIONES} repeticiones\n")
@@ -89,7 +89,7 @@ if __name__ == "__main__":
     r_snp, t_snp = medir(suma_secuencial_numpy, arr)
     r_tnp, t_tnp = medir(suma_hilos_numpy, arr, N, B)
 
-    # Verificación de correctitud: todas deben dar la misma suma
+    #Verificación de correctitud: todas deben dar la misma suma
     assert r_seq == r_thr == r_snp == r_tnp, "Las sumas no coinciden"
 
     print(f"{'Versión':<34}{'Suma':>14}{'Tiempo (s)':>14}{'Speedup':>10}")
