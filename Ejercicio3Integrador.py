@@ -79,7 +79,7 @@ if __name__ == "__main__":
     assert r_seq == referencia, "La suma secuencial no coincide con la referencia"
 
     # Híbrida con distinta cantidad de hilos
-    configuraciones = sorted({1, 2, 4, 6, NUCLEOS, n_bloques})
+    configuraciones = sorted({1, 2, 4, NUCLEOS, n_bloques})
     resultados = []
     for h in configuraciones:
         r, t = medir(suma_hibrida, arr, N, B, h)
