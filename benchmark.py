@@ -79,8 +79,7 @@ def main():
             rp = mejor(ejecutar_par, rep, n, n, gens, h)
             par[h][n] = rp["tiempo"]
             ok = "OK" if rp["checksum"] == rs["checksum"] else "¡RESULTADO DISTINTO!"
-            print(f"  {h} proceso(s): {rp['tiempo']:.3f} s | speedup {rs['tiempo'] / rp['tiempo']:.2f}x "
-                  f"| eficiencia {100 * rs['tiempo'] / rp['tiempo'] / h:.0f}% | verificación: {ok}")
+            print(f"  {h} proceso(s): {rp['tiempo']:.3f} s | speedup {rs['tiempo'] / rp['tiempo']:.2f}x")
 
 
     try:
