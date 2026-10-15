@@ -5,7 +5,7 @@ def inicializar(filas, cols, seed=100):
     """Tablero aleatorio como lista plana. Misma semilla significa mismo tablero,
     así secuencial y paralelo parten del mismo estado."""
     rnd = random.Random(seed)
-    return [1 if rnd.random() < 0.1 else 0 for _ in range(filas * cols)]
+    return [1 if rnd.random() < 0.3 else 0 for _ in range(filas * cols)]
 
 
 def calcular_filas(act, sig, filas, cols, ini, fin):

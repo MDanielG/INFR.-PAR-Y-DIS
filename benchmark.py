@@ -63,7 +63,7 @@ def main():
     gens = int(sys.argv[1]) if len(sys.argv) > 1 else 20
     rep = int(sys.argv[2]) if len(sys.argv) > 2 else 2
 
-    tamanos = [100, 200, 400, 800]               # ajusta según tu equipo
+    tamanos = [100, 500, 1000]               # ajusta según tu equipo
     nucleos = os.cpu_count() or 2
     hilos = [h for h in (1, 2, 4, 8) if h <= nucleos] or [1]
 
